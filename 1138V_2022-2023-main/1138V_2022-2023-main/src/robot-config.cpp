@@ -9,20 +9,22 @@ brain  Brain;
 
 // VEXcode device constructors
 controller Controller1 = controller(primary);
-motor leftMotorA = motor(PORT1, ratio18_1, false);
-motor leftMotorB = motor(PORT2, ratio18_1, false);
+motor leftMotorA = motor(PORT2, ratio18_1, true);
+motor leftMotorB = motor(PORT3, ratio18_1, true);
 motor_group LeftDriveSmart = motor_group(leftMotorA, leftMotorB);
-motor rightMotorA = motor(PORT13, ratio18_1, true);
-motor rightMotorB = motor(PORT20, ratio18_1, true);
+motor rightMotorA = motor(PORT13, ratio18_1, false);
+motor rightMotorB = motor(PORT20, ratio18_1, false);
 motor_group RightDriveSmart = motor_group(rightMotorA, rightMotorB);
 drivetrain Drivetrain = drivetrain(LeftDriveSmart, RightDriveSmart, 319.19, 295, 40, mm, 1);
-motor flywheelMotorA = motor(PORT3, ratio6_1, true);
-motor flywheelMotorB = motor(PORT4, ratio6_1, false);
-motor_group flywheel = motor_group(flywheelMotorA, flywheelMotorB);
-motor intakeMotorA = motor(PORT5, ratio18_1, true);
-motor intakeMotorB = motor(PORT6, ratio18_1, false);
+motor intakeMotorA = motor(PORT9, ratio18_1, true);
+motor intakeMotorB = motor(PORT10, ratio18_1, true);
 motor_group intake = motor_group(intakeMotorA, intakeMotorB);
-digital_out pneumaticS = digital_out(Brain.ThreeWirePort.A);
+digital_out air = digital_out(Brain.ThreeWirePort.A);
+digital_out endgame_right = digital_out(Brain.ThreeWirePort.B);
+digital_out endgame_left = digital_out(Brain.ThreeWirePort.C);
+motor flywheelMotorA = motor(PORT5, ratio18_1, true);
+motor flywheelMotorB = motor(PORT6, ratio18_1, false);
+motor_group flywheel = motor_group(flywheelMotorA, flywheelMotorB);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable

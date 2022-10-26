@@ -1,3 +1,21 @@
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// Drivetrain           drivetrain    1, 2, 13, 20    
+// flywheel             motor_group   3, 4            
+// intake               motor_group   5, 6            
+// pneumaticS           digital_out   A               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// Drivetrain           drivetrain    1, 2, 19, 20    
+// flywheel             motor_group   3, 4            
+// intake               motor_group   5, 6            
+// pneumaticS           digital_out   A               
+// ---- END VEXCODE CONFIGURED DEVICES ----
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
@@ -35,26 +53,19 @@ int whenStarted1() {
 }
 
 // "when Controller1 ButtonR1 pressed" hat block
-void onevent_Controller1ButtonR1_pressed_0() {
-  if (digitalOn) {
+void shooter(){
     pneumaticS.set(false);
-    wait(0.1, seconds);
-    digitalOn = false;
-  }
-  else {
+    wait(0.2, seconds);
     pneumaticS.set(true);
-    wait(0.1, seconds);
-    digitalOn = false;
-  }
 }
 
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
+  whenStarted1();
   Drivetrain.setDriveVelocity(100.0, percent);
   flywheel.setVelocity(100.0, percent);
   intake.setVelocity(100.0, percent);
-  Controller1.ButtonR1.pressed(onevent_Controller1ButtonR1_pressed_0);
+  Controller1.ButtonR1.pressed(shooter);
   wait(15, msec);
-  whenStarted1();
 }
